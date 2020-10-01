@@ -1,0 +1,12 @@
+{
+  "name": "spin",
+  "displayName": "spin",
+  "expo": {
+    "name": "spin",
+    "slug": "spin",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
