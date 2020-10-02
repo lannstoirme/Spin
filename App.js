@@ -3,7 +3,21 @@ import React, { Component } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, SafeAreaView } from 'react-native';
 import CalendarPicker from 'react-native-calendar-picker';
 import { Image, Card } from 'react-native-elements';
+import  Measure  from './Measure.js';
+import { createStackNavigator } from '@react-navigation/stack';
+import { NavigationContainer } from '@react-navigation/native';
 
+
+const Stack = createStackNavigator();
+
+function NavStack() {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen name="Home" component={App} />
+      <Stack.Screen name="Measure" component={Measure} />
+    </Stack.Navigator>
+  );
+}
 
 export default class App extends Component {
   constructor(props) {
@@ -23,6 +37,8 @@ export default class App extends Component {
     const { selectedStartDate } = this.state;
     const startDate = selectedStartDate ? selectedStartDate.toString() : '';
     return (
+      <NavigationContainer>
+        <NavStack />
       <SafeAreaView style={styles.viewholder}>
       <View style={styles.container}>
         <Text style={styles.text}>How are you today?</Text>
@@ -80,13 +96,16 @@ export default class App extends Component {
              
              <Text style={styles.text2}>BPM</Text>
           </Card>
-          
+          <TouchableOpacity 
+            onPress={() => this.props.navigation.navigate('Measure')} >
             <Image style={styles.imageicon2}
              source={require('./measureicon.png')} />
+            </TouchableOpacity>
           
           </View>
       </View>
       </SafeAreaView>
+      </NavigationContainer>
     );
   }
 }
